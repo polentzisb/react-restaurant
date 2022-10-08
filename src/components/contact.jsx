@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import MarkunreadIcon from '@mui/icons-material/Markunread';
-import '../styles/contact.css'
-import Input from './input'
-import { db } from './firebase'
-import {collection, addDoc} from 'firebase/firestore'
+import '../styles/contact.css';
+import Input from './input';
+import { db } from './firebase';
+import {collection, addDoc} from 'firebase/firestore';
 import toast, { Toaster } from 'react-hot-toast';
 
 

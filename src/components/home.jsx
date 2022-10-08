@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
-import bannerImage from '../assets/img1.jpg'
+import bannerImage from '../assets/img1.jpg';
 import '../styles/home.css';
 
 const Home = () => {
