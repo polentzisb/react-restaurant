@@ -1,3 +1,14 @@
+Este proyecto es una pagina web de un restaurante, que tiene seccion Home, Contact, About y Menu. El apartado de contact esta enlazado con FireStore 
+donde la informacion queda guardada en una DataBase. Los demas componentes entregan información. 
+Se utilizo React-Router-Dom para enlazar las distintas paginas. Mui para algunos iconos. Boostrap para templates hechos. Hot Toast para una notificación 
+cuando la informacion de Contact Form es enviada satisfactoriamente. 
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
