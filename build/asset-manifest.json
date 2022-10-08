@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1b05d6ae.css",
+    "main.js": "/static/js/main.9b94e0ca.js",
+    "static/media/sushi1.jpg": "/static/media/sushi1.5c925149e2546d8b87a0.jpg",
+    "static/media/img2.jpg": "/static/media/img2.567569be797c1b6378dd.jpg",
+    "static/media/img1.jpg": "/static/media/img1.121a6a8886ab2f20daab.jpg",
+    "static/media/sushi2.jpg": "/static/media/sushi2.87c475e8f6485cfb8610.jpg",
+    "static/media/sushi3.jpg": "/static/media/sushi3.8be91b8d8887e4ab5c88.jpg",
+    "static/media/bento3.jpg": "/static/media/bento3.2b83eedc51226144aa17.jpg",
+    "static/media/bento1.jpg": "/static/media/bento1.490c95be0f901d1a0517.jpg",
+    "static/media/bento2.jpg": "/static/media/bento2.f45d69dce29e6e75f719.jpg",
+    "index.html": "/index.html",
+    "main.1b05d6ae.css.map": "/static/css/main.1b05d6ae.css.map",
+    "main.9b94e0ca.js.map": "/static/js/main.9b94e0ca.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1b05d6ae.css",
+    "static/js/main.9b94e0ca.js"
+  ]
+}

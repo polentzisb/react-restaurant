@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap');
+
+
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+section {
+  color: #fff;
+  background-color: #121619;
+  height: 100vh;  
+}
+.navBg {
+  background-color: #121619;
+}
+
+
