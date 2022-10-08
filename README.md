@@ -4,6 +4,7 @@ Este proyecto es una pagina web de un restaurante, que tiene seccion Home, Conta
 donde la informacion queda guardada en una DataBase. Los demas componentes entregan información. 
 Se utilizo React-Router-Dom para enlazar las distintas paginas. Mui para algunos iconos. Boostrap para templates hechos. Hot Toast para una notificación 
 cuando la informacion de Contact Form es enviada satisfactoriamente. 
+Link de la web: https://wasabi-sushi-bento.netlify.app/
 
 
 ![img-react](https://user-images.githubusercontent.com/75914262/194722311-3ee2dcd9-3915-4a02-b043-342de2e25fca.jpg)
