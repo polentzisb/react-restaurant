@@ -6,7 +6,7 @@ Se utilizo React-Router-Dom para enlazar las distintas paginas. Mui para algunos
 cuando la informacion de Contact Form es enviada satisfactoriamente. 
 
 
-![alt text](https://wasabi-sushi-bento.netlify.app/)
+!(https://wasabi-sushi-bento.netlify.app/)
 
 
 
