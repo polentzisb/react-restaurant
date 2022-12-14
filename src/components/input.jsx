@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const Input = (props) => {
   const {label, id, type, handleInput} = props
   return (

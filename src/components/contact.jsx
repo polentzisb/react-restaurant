@@ -7,9 +7,6 @@ import {collection, addDoc} from 'firebase/firestore';
 import toast, { Toaster } from 'react-hot-toast';
 
 
-
-
-
 const Contact = () => {
   const [newMessage, setNewMessage] = useState({})
   const [saving, setSaving] = useState(false)
@@ -19,12 +16,8 @@ const Contact = () => {
       ...newMessage,
       [e.target.name]: e.target.value
     })
-
   }
   
-
-  
-
   const saveMessage = async (e) => {
     try {
       e.preventDefault()
@@ -43,36 +36,27 @@ const Contact = () => {
       <h1>Contact Form <MarkunreadIcon /></h1>
       <Toaster />
 
-      <Input 
+      <Input className='space'
         label='Name'
         id='name'
         type='text'
-        handleInput={(e)=>handleInput(e)}
-        />
+        handleInput={(e)=>handleInput(e)}/>
 
-      <Input  
+      <Input className='space'
          label='Email'
          id='email'
          type='Email'
-         handleInput={(e)=>handleInput(e)}
-         />
+         handleInput={(e)=>handleInput(e)}/>
 
       
-
       <label>Message</label>
       <textarea 
         name='message'
         id='message'
         placeholder='Message'
         onChange={(e)=>handleInput(e)} />
-      
       <button onClick={(e)=>saveMessage(e)} disabled={saving}>Submit Message</button>
-
-
     </form>
-    
-  
-
   )
 }
 

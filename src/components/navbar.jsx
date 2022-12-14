@@ -1,8 +1,6 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Outlet, Link } from 'react-router-dom';
 
-
-
 const NavbarMain = () => {
   return (
     <>

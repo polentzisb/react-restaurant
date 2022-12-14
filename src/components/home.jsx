@@ -10,7 +10,6 @@ const Home = () => {
           <h1>Wasabi Sushi & Bento</h1>
           <p>Enjoy the best rolls and bentos to go</p>
           <Button variant="success">Order Now</Button>{' '}
-
         </div>
     </div>
   )

@@ -6,7 +6,6 @@ import sushi2 from '../assets/sushi2.jpg';
 import sushi3 from '../assets/sushi3.jpg';
 
 
-
 export const MenuList = [
     {
         name: 'Bento House',
