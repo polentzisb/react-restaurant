@@ -1,9 +1,10 @@
 # React Restaurant Page 
 
-Este proyecto es una pagina web de un restaurante, que tiene seccion Home, Contact, About y Menu. El apartado de contact esta enlazado con FireStore 
-donde la informacion queda guardada en una DataBase. Los demas componentes entregan información. 
-Se utilizo React-Router-Dom para enlazar las distintas paginas. Mui para algunos iconos. Boostrap para templates hechos. Hot Toast para una notificación 
+Proyecto sobre una pagina web simple de un restaurante, cuenta con sección Home, Contact, About y Menu. El apartado de contact esta enlazado con FireStore 
+donde la informacion queda guardada en una DB. Los demas componentes entregan información. 
+Se utilizo React-Router-Dom para enlazar las distintas paginas. MUI para algunos iconos. Boostrap para templates hechos. Hot Toast para notificar 
 cuando la informacion de Contact Form es enviada satisfactoriamente. 
+
 Link de la web: https://wasabi-sushi-bento.netlify.app/
 
 
