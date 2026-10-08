@@ -2,6 +2,8 @@
 
 Sitio de restaurante con React, React Router y Vite. Incluye inicio, carta con búsqueda y filtros, presentación del restaurante y formulario de consultas conectado a Cloud Firestore.
 
+https://wasabi-sushi-bento.netlify.app/
+
 ## Ejecutar localmente
 
 Necesitas **Node.js 24** (también compatible con Node 22.13 o superior de la rama 22).
