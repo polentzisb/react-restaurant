@@ -1,29 +1,23 @@
-import { Navbar, Nav, Container } from "react-bootstrap";
-import { Outlet, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
-const NavbarMain = () => {
+export default function NavbarMain() {
+  const [openPath, setOpenPath] = useState(null);
+  const { pathname } = useLocation();
+  const open = openPath === pathname;
+  const close = () => setOpenPath(null);
   return (
-    <>
-      <Navbar className='navBg' variant="dark" expand="lg">
-        <Container>
-          <Navbar.Brand as={Link} to='/' >Wasabi</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            
-            <Nav className="me-auto">
-            <Nav.Link as={Link} to='/' >Home</Nav.Link>
-            <Nav.Link as={Link} to='/about' >About</Nav.Link>
-            <Nav.Link as={Link} to='/contact' >Contact</Nav.Link>
-            <Nav.Link as={Link} to='/menu' >Menu</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-    <section>
-        <Outlet></Outlet>
-    </section>
-    </>
-  )
+    <header className="site-header">
+      <div className="header-inner">
+        <Link className="brand" to="/" onClick={close} aria-label="Wasabi, inicio"><span className="brand-mark" aria-hidden="true">w.</span><span>wasabi<small>SUSHI & BENTO</small></span></Link>
+        <button className="nav-toggle" type="button" aria-expanded={open} aria-controls="main-navigation" onClick={() => setOpenPath(open ? null : pathname)}>{open ? 'Cerrar' : 'Menú'} <span aria-hidden="true">{open ? '×' : '☰'}</span></button>
+        <nav id="main-navigation" className={`navigation ${open ? 'is-open' : ''}`} aria-label="Navegación principal" onKeyDown={(event) => { if (event.key === 'Escape') close(); }}>
+          <NavLink to="/" end onClick={close}>Inicio</NavLink>
+          <NavLink to="/menu" onClick={close}>Nuestro menú</NavLink>
+          <NavLink to="/about" onClick={close}>Nosotros</NavLink>
+          <NavLink to="/contact" className="nav-contact" onClick={close}>Hablemos <span aria-hidden="true">↗</span></NavLink>
+        </nav>
+      </div>
+    </header>
+  );
 }
-
-export default NavbarMain

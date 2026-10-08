@@ -1,84 +1,70 @@
-# React Restaurant Page 
+# Wasabi · Sushi & Bento
 
-Proyecto sobre una pagina web simple de un restaurante, cuenta con sección Home, Contact, About y Menu. El apartado de contact esta enlazado con FireStore 
-donde la informacion queda guardada en una DB. Los demas componentes entregan información. 
-Se utilizo React-Router-Dom para enlazar las distintas paginas. MUI para algunos iconos. Boostrap para templates hechos. Hot Toast para notificar 
-cuando la informacion de Contact Form es enviada satisfactoriamente. 
+Sitio de restaurante con React, React Router y Vite. Incluye inicio, carta con búsqueda y filtros, presentación del restaurante y formulario de consultas conectado a Cloud Firestore.
 
-Link de la web: https://wasabi-sushi-bento.netlify.app/
+## Ejecutar localmente
 
+Necesitas **Node.js 24** (también compatible con Node 22.13 o superior de la rama 22).
 
-![img-react](https://user-images.githubusercontent.com/75914262/194722311-3ee2dcd9-3915-4a02-b043-342de2e25fca.jpg)
+```sh
+npm ci
+npm run dev
+```
 
+Abre la dirección que muestra Vite, normalmente `http://127.0.0.1:5173`. `npm start` funciona como alias. La web se puede explorar sin Firebase; en ese caso el formulario avisa que el envío no está disponible.
 
+```sh
+npm run lint       # Revisión estática
+npm test           # Pruebas automáticas, sin modo de espera
+npm run test:watch # Pruebas durante el desarrollo
+npm run build      # Compilación en dist/
+npm run preview    # Vista previa de la compilación
+```
 
-# Getting Started with Create React App
+## Configurar el formulario
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Copia `.env.example` a `.env.local`.
+2. Completa las variables `VITE_FIREBASE_*` con la configuración web de tu proyecto en Firebase Console → Project settings.
+3. Activa Cloud Firestore y configura sus reglas para la colección `messages`. Se incluye `firestore.rules` como punto de partida: permite crear mensajes válidos y deniega su lectura, modificación y eliminación desde clientes. Revisa e integra estas reglas con las de tu proyecto antes de aplicarlas; no se despliegan automáticamente.
+4. Reinicia Vite. En producción, define las mismas variables antes de compilar.
 
-## Available Scripts
+El documento enviado contiene `name`, `email`, `message` y `createdAt` (fecha del servidor). El formulario valida campos obligatorios y correo, limita longitudes, bloquea envíos simultáneos, conserva los datos si ocurre un error y se limpia al confirmar el guardado. Las claves web de Firebase son configuración pública; la protección de los datos depende de las reglas de Firestore. No uses una cuenta de servicio en estas variables. Para un formulario público en producción, configura Firebase App Check y una estrategia de protección contra abuso apropiada.
 
-In the project directory, you can run:
+Las pruebas simulan el servicio de mensajes. La entrega real y las reglas deben verificarse contra tu proyecto Firebase o el emulador antes de publicar; este repositorio no incluye credenciales ni se ha conectado a una base de datos durante la mejora.
 
-### `npm start`
+## Despliegue
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+`netlify.toml` configura Node 24, `npm run build`, publicación de `dist/` y redirecciones para React Router. Si actualizas el sitio existente en Netlify, comprueba que no conserve una configuración manual de publicación en `build/`. En otros proveedores, configura todas las rutas del sitio para servir `index.html`.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Sitio original: [Wasabi Sushi & Bento](https://wasabi-sushi-bento.netlify.app/). Los cambios locales no actualizan automáticamente ese sitio.
 
-### `npm test`
+## Contenido y estructura
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `src/data/menulist.jsx`: catálogo, identificadores, categorías, imágenes y precios.
+- `src/components/`: páginas y componentes compartidos.
+- `src/services/messages.js`: configuración y envío a Firestore; Firebase Firestore Lite se carga cuando se envía un mensaje.
+- `src/styles/` y `src/App.css`: estilos adaptables y sistema visual.
+- `src/test/` y `*.test.jsx`: pruebas con Vitest y Testing Library.
 
-### `npm run build`
+Se conservaron los platos, precios y fotografías originales. Los importes del catálogo se muestran explícitamente en USD; confirma moneda, precios y disponibilidad antes de usarlo comercialmente. La consulta de un plato precarga el formulario; no hay checkout, cobro ni confirmación de pedidos. No se inventaron direcciones, horarios o cuentas sociales.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Revisión y mejoras
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+La versión inicial tenía alturas y anchos fijos que desbordaban el contenido, un botón de pedido sin acción, enlaces sin estado activo, texto de relleno y un formulario que podía quedar bloqueado después de un fallo. Además, dependía de bibliotecas sin uso y versionaba una compilación que duplicaba el código y las imágenes.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+La actualización incorpora:
 
-### `npm run eject`
+- Diseño coherente en español, adaptable a móvil y escritorio, manteniendo la marca y las imágenes.
+- Navegación móvil, enlaces activos, foco visible, salto al contenido, imágenes con texto alternativo y estados accesibles.
+- Búsqueda combinada con filtros de sushi y bento, contador y recuperación desde resultados vacíos.
+- Consultas por plato, validación y recuperación de errores del formulario.
+- Página 404, títulos por ruta y carga diferida de páginas y Firebase Firestore Lite.
+- Fotografías WebP: 10,15 MB → 0,63 MB, aproximadamente un 94 % menos de descarga.
+- Migración de Create React App a Vite y eliminación de Bootstrap, MUI, librerías de mapas y otras dependencias sin uso.
+- Compilación fuera del control de versiones, variables documentadas y validación en GitHub Actions.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Las fotografías originales de alta resolución siguen disponibles en `src/assets/*.jpg`; la web utiliza copias WebP optimizadas y carga diferida en la carta. Ejecuta `npm run optimize:images` después de reemplazar las fotografías originales. Las copias WebP se versionan, por lo que no hace falta regenerarlas para ejecutar o compilar.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Se fijaron versiones compatibles de `@firebase/app` y `@firebase/app-compat` para Node 24.11, y una versión corregida de `@grpc/grpc-js` mediante `overrides`. Revisa estas restricciones al actualizar Firebase.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Referencias de implementación: [Vite](https://vite.dev/guide/) y [escrituras en Firestore](https://firebase.google.com/docs/firestore/manage-data/add-data).

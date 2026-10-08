@@ -1,22 +1,8 @@
-import React from 'react';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import PinterestIcon from '@mui/icons-material/Pinterest';
+import { Link } from 'react-router-dom';
 import '../styles/footer.css';
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <div className='footer'>
-        <div className='socialMedia'>
-            <InstagramIcon />
-            <FacebookIcon />
-            <TwitterIcon />
-            <PinterestIcon />
-        </div>
-        <p> &copy; 2022 wasabi sushi & bentos</p>
-    </div>
-  )
+    <footer className="site-footer"><div className="footer-inner"><Link className="brand footer-brand" to="/" aria-label="Wasabi, inicio"><span className="brand-mark" aria-hidden="true">w.</span><span>wasabi<small>SUSHI & BENTO</small></span></Link><p>Un buen roll. Un gran día.</p><nav aria-label="Navegación del pie de página"><Link to="/menu">Menú</Link><Link to="/about">Nosotros</Link><Link to="/contact">Contacto</Link></nav></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Wasabi Sushi & Bento</span><span>Hecho para disfrutar.</span></div></footer>
+  );
 }
-
-export default Footer

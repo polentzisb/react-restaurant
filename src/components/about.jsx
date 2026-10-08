@@ -1,18 +1,12 @@
-import React from 'react';
-import img2 from '../assets/img2.jpg';
+import { Link } from 'react-router-dom';
+import img2 from '../assets/img2.webp';
 import '../styles/about.css';
 
-const About = () => {
+export default function About() {
   return (
-    <div className='about'>
-      <div className='aboutTop' style={{ backgroundImage: `url(${img2})` }}></div>
-      <div className='aboutBottom'>
-        <h1>ABOUT US</h1>
-        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-        </p>
-      </div>
-    </div>
-  )
+    <section className="about-page page-shell" aria-labelledby="about-title">
+      <div className="about-image"><img src={img2} alt="Cocineros preparando platos detrás de una barra de sushi" width="1200" height="1680" decoding="async" /><span className="image-caption">UN LUGAR PARA DISFRUTAR</span></div>
+      <div className="about-copy"><span className="eyebrow">HOLA, SOMOS WASABI</span><h1 id="about-title">Pequeñas pausas.<br /><em>Grandes sabores.</em></h1><p>Un almuerzo a tu ritmo. Un encuentro con amigos. Ese antojo de sushi que no necesita una ocasión especial.</p><p>En Wasabi, la carta reúne sushi rolls y bento boxes para que encuentres una opción para cada momento. Explora los clásicos, descubre los bentos y elige tu favorito.</p><div className="about-details"><div><span>01</span><h2>Sushi rolls</h2><p>Un clásico para disfrutar y compartir.</p></div><div><span>02</span><h2>Bento boxes</h2><p>Una alternativa para cambiar la rutina.</p></div></div><Link className="button" to="/menu">Conoce nuestra carta <span aria-hidden="true">↗</span></Link></div>
+    </section>
+  );
 }
-
-export default About
